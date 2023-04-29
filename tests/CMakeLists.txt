@@ -1,0 +1,2 @@
+add_executable(markdown_parser_test markdown_parser_test.c)
+target_link_libraries(markdown_parser_test redaktisto)
