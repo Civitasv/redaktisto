@@ -1,1 +1,5 @@
+add_subdirectory(glad)
+add_subdirectory(glfw)
+add_subdirectory(imgui)
 add_subdirectory(md4c)
+add_subdirectory(spdlog)

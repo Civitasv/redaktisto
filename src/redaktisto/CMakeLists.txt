@@ -1,14 +1,17 @@
-add_library(redaktisto editor.c gtk_ui.c)
+add_library(redaktisto editor.cc ui.cc)
 
-target_link_libraries(redaktisto PUBLIC md4c)
+find_package(OpenGL REQUIRED)
+target_link_libraries(redaktisto PUBLIC glad glfw imgui spdlog md4c OpenGL::GL)
 
-target_include_directories(redaktisto PUBLIC ${PROJECT_SOURCE_DIR}/vendor
-                                             ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(redaktisto PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
-# GTK4
-find_package(PkgConfig REQUIRED)
-pkg_check_modules(GTK4 REQUIRED gtk4)
-add_definitions(${GTK4_CFLAGS_OTHER})
-target_include_directories(redaktisto PUBLIC ${GTK4_INCLUDE_DIRS})
-target_link_directories(redaktisto PUBLIC ${GTK4_LIBRARY_DIRS})
-target_link_libraries(redaktisto PUBLIC ${GTK4_LIBRARIES})
+set_target_properties(
+  redaktisto
+  PROPERTIES
+    ARCHIVE_OUTPUT_DIRECTORY
+    "${CMAKE_SOURCE_DIR}/bin/${CMAKE_BUILD_TYPE}/${CMAKE_HOST_SYSTEM_PROCESSOR}/${PROJECT_NAME}/lib"
+    LIBRARY_OUTPUT_DIRECTORY
+    "${CMAKE_SOURCE_DIR}/bin/${CMAKE_BUILD_TYPE}/${CMAKE_HOST_SYSTEM_PROCESSOR}/${PROJECT_NAME}/lib"
+    RUNTIME_OUTPUT_DIRECTORY
+    "${CMAKE_SOURCE_DIR}/bin/${CMAKE_BUILD_TYPE}/${CMAKE_HOST_SYSTEM_PROCESSOR}/${PROJECT_NAME}/lib"
+)

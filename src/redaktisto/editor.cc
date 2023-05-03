@@ -1,7 +1,7 @@
 #include "editor.h"
-#include "gtk_ui.h"
+#include "ui.h"
 
 void redaktisto_editor(int argc, char **argv)
 {
-	redaktisto_gtk_renderer(argc, argv);
+	redaktisto_main_ui(argc, argv);
 }

@@ -1,4 +1,4 @@
-add_executable(run run.c)
+add_executable(run run.cc)
 
 target_link_libraries(run redaktisto)
 

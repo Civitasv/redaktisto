@@ -1,2 +1,2 @@
-add_executable(markdown_parser_test markdown_parser_test.c)
+add_executable(markdown_parser_test markdown_parser_test.cc)
 target_link_libraries(markdown_parser_test redaktisto)
